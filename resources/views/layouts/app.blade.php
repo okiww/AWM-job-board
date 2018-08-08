@@ -22,24 +22,20 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="icon" href="{{ asset('themeforest/img/favicon.ico') }}">
 </head>
-@if (Route::currentRouteName() === "login")
-    <body class="login-page">
-@elseif (Route::currentRouteName() === "register")
+@if (Route::currentRouteName() === "login" || Route::currentRouteName() === "register" || Route::currentRouteName() === "password.request" || Route::currentRouteName() === "password.reset")
     <body class="login-page">
 @else
     <body class="nav-on-header smart-nav">
 @endif
         <div id="app">
             <!-- Navigation bar -->
-            @if (Route::currentRouteName() !== "login" && Route::currentRouteName() !== "register")
+            @if (Route::currentRouteName() !== "login" && Route::currentRouteName() !== "register" && Route::currentRouteName() !== 'password.request' && Route::currentRouteName() !== "password.reset")
                 @include('layouts.nav')
             @endif
-            
             <!-- Header -->
-            @if (Route::currentRouteName() !== "login" && Route::currentRouteName() !== "register")
+            @if (Route::currentRouteName() !== "login" && Route::currentRouteName() !== "register" && Route::currentRouteName() !== 'password.request' && Route::currentRouteName() !== "password.reset")
                 @include('layouts.header')
             @endif
-
             <!-- Main container -->
             <main>
                 @yield('content')
@@ -48,14 +44,14 @@
 
 
             <!-- Site footer -->
-            @if (Route::currentRouteName() !== "login" && Route::currentRouteName() !== "register")
+            @if (Route::currentRouteName() !== "login" && Route::currentRouteName() !== "register" && Route::currentRouteName() !== 'password.request' && Route::currentRouteName() !== "password.reset")
                 @include('layouts.footer')
             @endif
             <!-- END Site footer -->
 
 
             <!-- Back to top button -->
-            @if (Route::currentRouteName() !== "login" && Route::currentRouteName() !== "register")
+            @if (Route::currentRouteName() !== "login" && Route::currentRouteName() !== "register" && Route::currentRouteName() !== 'password.request' && Route::currentRouteName() !== "password.reset")
                 <a id="scroll-up" href="#"><i class="ti-angle-up"></i></a>
             @endif
             <!-- END Back to top button -->

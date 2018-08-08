@@ -13,18 +13,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.main');
-});
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/logout', function() {
-    Session::forget('key');
-     if(!Session::has('key'))
-      {
-        Auth::logout();
-         return "/";
-      }
+Route::middleware(['web', 'auth'])->group(function () {
+    Route::get('/', function () {
+       echo "test";
     });
+
+    Route::get('user/profile', function () {
+        // Uses first & second Middleware
+    });
+});
